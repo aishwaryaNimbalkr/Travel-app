@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import data from './data'
 import './App.css';
+import { useState } from 'react';
+import Travels from './Components/Travels';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [state,setState]=useState(data);
+  function Remove(id){
+    const deleted= state.filter((it)=>it.id !== id)
+    setState(deleted)
+
+  }
+
+  return (                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    <>
+    {state.length === 0? <div className=' border border-2 border-dark bg-info text-center py-5'><p>No service is available</p> <p style={{cursor:"pointer"}} onClick={()=>{setState(data)}}>Refresh</p></div>: <Travels tours={state} Remove={Remove}/>}
+   
+    
+    </>
   );
 }
 
